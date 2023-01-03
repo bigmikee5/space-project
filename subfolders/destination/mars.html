@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MARS</title>
+
+
+    <!--:::: FAVICON ::::::  -->
+    <link rel="icon" href="../../images/favicon-32x32.png">
+    <!-- :::: STYLES :::::: -->
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: url(../../subfolders/mobileBgdes.png);
+            background-repeat: no-repeat;
+            overflow: hidden;
+            background-size: cover;
+        }
+
+        .nav {
+            position: relative;
+        }
+
+        .logo {
+            position: absolute;
+            width: 2.5rem;
+            height: 2.5rem;
+            left: 1.5rem;
+            top: 1.5rem;
+        }
+
+        .hamburger {
+            position: absolute;
+            width: 1.5rem;
+            height: 1.3125rem;
+            left: 19.5rem;
+            top: 2.0625rem;
+        }
+
+        .nav-menu {
+            display: block;
+            position: absolute;
+            top: 0;
+            right: -100%;
+            width: 60%;
+            height: 100vh;
+            background: #464955;
+            padding: 2rem;
+            transition: 0.3s;
+            z-index: 999;
+        }
+
+        .items {
+            margin-top: 2rem;
+        }
+
+        .items>li {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .items span {
+            padding-right: 0.3rem;
+        }
+
+        .items a {
+            color: #FFFFFF;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .show {
+            right: 0;
+        }
+
+        /* :::: main contents ::: */
+
+        .welcome-text {
+
+            position: absolute;
+            height: 1.1875rem;
+            left: 17.9%;
+            top: 13%;
+            font-family: 'Barlow Condensed';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 0.875rem;
+            line-height: 1.1875rem;
+            letter-spacing: 0.1688rem;
+            text-transform: uppercase;
+            color: #FFFFFF;
+        }
+
+        .welcome-text span {
+
+            position: absolute;
+            height: 1.1875rem;
+            right: 103%;
+            top: calc(50% - 1.1875rem/2);
+            font-family: 'Barlow Condensed';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 0.875rem;
+            line-height: 1.1875rem;
+            letter-spacing: 0.1688rem;
+            color: #FFFFFF;
+            mix-blend-mode: normal;
+            opacity: 0.25;
+        }
+
+        .mars-img-div {
+
+            position: relative;
+            width: 9.375rem;
+            height: 9.375rem;
+            left: 6.4375rem;
+            top: 7.4rem;
+        }
+
+        .mars {
+
+            position: absolute;
+            width: 7.3rem;
+            height: 7.3rem;
+            left: 0;
+            top: 0;
+        }
+
+        .second-nav-menu {
+
+            position: absolute;
+            width: 14.8125rem;
+            height: 1.75rem;
+            left: 3rem;
+            top: 14rem;
+        }
+
+        .second-nav-menu .items {
+            display: flex;
+            gap: 1.5rem;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            font-size: 0.8125rem;
+        }
+
+        .second-nav-menu .items::after {
+            content: "";
+            width: 2.4rem;
+            height: 0.1rem;
+            position: absolute;
+            background: #FFFFFF;
+            top: 3.5rem;
+            left: 4rem;
+        }
+
+        .destination-title {
+            position: absolute;
+            width: 9.5625rem;
+            height: 4rem;
+            left: 5.625rem;
+            top: 18rem;
+            font-family: 'Bellefair';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 2.8125rem;
+            line-height: 4rem;
+            text-align: center;
+            color: #FFFFFF;
+            text-transform: uppercase;
+        }
+
+        .destination-description {
+
+            position: absolute;
+            width: 19.6875rem;
+            height: 6.25rem;
+            left: 1.5rem;
+            top: 22rem;
+            font-family: 'Barlow';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 0.875rem;
+            line-height: 1.5625rem;
+            text-align: center;
+            color: #D0D6F9;
+        }
+
+        hr {
+            position: absolute;
+            width: 20.4375rem;
+            height: 0.0063rem;
+            left: 1.5rem;
+            top: 29.6875rem;
+            opacity: 0.2;
+        }
+
+        .distance {
+            position: absolute;
+            width: 13.5rem;
+            height: 3.8125rem;
+            left: 5rem;
+            top: 31.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            text-transform: uppercase;
+        }
+
+        .avg-distance {
+            position: absolute;
+            height: 1.0625rem;
+            left: 0%;
+            right: 0%;
+            top: calc(47% - 1.0625rem/2 - 1.375rem);
+            font-family: 'Barlow Condensed';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 0.625rem;
+            line-height: 1.0625rem;
+            text-align: center;
+            letter-spacing: 0.1477rem;
+            text-transform: uppercase;
+            color: #D0D6F9;
+        }
+
+        .total-distance {
+            position: absolute;
+            height: 2rem;
+            left: 0%;
+            right: 0%;
+            top: calc(30% - 2rem/2 + 0.9063rem);
+
+            font-family: 'Bellefair';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 1.4375rem;
+            line-height: 2rem;
+            text-align: center;
+            text-transform: uppercase;
+            color: #FFFFFF;
+        }
+
+        .time {
+            position: absolute;
+            width: 13.9375rem;
+            height: 3.8125rem;
+            left: 4.75rem;
+            top: 35rem;
+        }
+
+        .travel-time {
+            position: absolute;
+            height: 1.0625rem;
+            left: 0%;
+            right: 0%;
+            top: calc(59% - 1.0625rem/2 - 1.375rem);
+            font-family: 'Barlow Condensed';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 0.625rem;
+            line-height: 1.0625rem;
+            text-align: center;
+            letter-spacing: 0.1477rem;
+            text-transform: uppercase;
+            color: #D0D6F9;
+        }
+
+        .total-time {
+            position: absolute;
+            height: 2rem;
+            left: 0%;
+            right: 0%;
+            top: calc(50% - 2rem/2 + 0.9063rem);
+            font-family: 'Bellefair';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 1.75rem;
+            line-height: 2rem;
+            text-align: center;
+            text-transform: uppercase;
+            color: #FFFFFF;
+        }
+
+        /* :::: MEDIA QUERIES */
+        @media screen and (min-width:768px) {
+
+            body {
+                background-image: url(../../subfolders/bgtabletdes.jpg);
+                background-repeat: no-repeat;
+                overflow: auto;
+                background-size: cover;
+
+            }
+
+            .nav {
+                position: relative;
+                position: absolute;
+                width: 45.5625rem;
+                height: 6rem;
+                left: 2.4375rem;
+                top: 0rem;
+            }
+
+            .logo {
+                position: absolute;
+                width: 2.5rem;
+                height: 2.5rem;
+                left: 0.5rem;
+                top: 1.5rem;
+            }
+
+            .hamburger,
+            .hamburg-close {
+                display: none;
+            }
+
+            .nav-menu {
+                position: absolute;
+                width: 28.125rem;
+                height: 5.5rem;
+                left: 19.875rem;
+                top: 0;
+                background: rgba(255, 255, 255, 0.04);
+                backdrop-filter: blur(2.5484rem);
+            }
+
+            .items {
+                display: flex;
+                position: absolute;
+                top: 0;
+                gap: 1rem;
+            }
+
+            .items span {
+                display: none;
+            }
+
+            .items a {
+                color: #FFFFFF;
+                text-decoration: none;
+                text-transform: uppercase;
+                font-size: 14px;
+            }
+
+
+
+            .welcome-text {
+
+                position: absolute;
+                height: 1.1875rem;
+                left: 14%;
+                top: 18%;
+
+            }
+
+            .moon {
+
+                position: absolute;
+                width: 10rem;
+                height: 10rem;
+                left: 13rem;
+                top: 1.5rem;
+            }
+
+            .second-nav-menu {
+
+                position: absolute;
+                width: 14.8125rem;
+                height: 1.75rem;
+                left: 17rem;
+                top: 18rem;
+            }
+
+            .second-nav-menu .items {
+                font-size: 0.1rem;
+            }
+
+            .second-nav-menu .items::after {
+                content: "";
+                width: 2.4rem;
+                height: 0.1rem;
+                position: absolute;
+                background: #FFFFFF;
+                top: 1rem;
+                left: 0.1rem;
+            }
+
+            .destination-title {
+                position: absolute;
+                width: 9.5625rem;
+                height: 4rem;
+                left: 19rem;
+                top: 21rem;
+            }
+
+            .destination-description {
+
+                position: absolute;
+                width: 27rem;
+                height: 6.25rem;
+                left: 9.5rem;
+                top: 25rem;
+                font-size: 0.8rem;
+
+            }
+
+            hr {
+                position: absolute;
+                width: 35rem;
+                height: 0.0063rem;
+                left: 4.5rem;
+                top: 30rem;
+                opacity: 0.2;
+            }
+
+
+            .distance {
+                position: absolute;
+                width: 13.5rem;
+                height: 3.8125rem;
+                left: 10rem;
+                top: 31.25rem;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                text-transform: uppercase;
+            }
+
+            .avg-distance {
+
+                font-size: 0.55rem;
+
+            }
+
+            .total-distance {
+                font-size: 1.2rem;
+
+            }
+
+
+            .travel-time {
+                position: absolute;
+                height: 1.0625rem;
+                left: 20rem;
+                top: -4rem;
+                width: 15rem;
+                font-size: 0.55rem;
+
+            }
+
+            .total-time {
+                position: absolute;
+                height: 2rem;
+                width: 10rem;
+                left: 22.4rem;
+                top: -2.7rem;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media screen and (min-width:1024px) {
+
+            body {
+                background-image: url(../../subfolders/bgtabletdes.jpg);
+                background-color: #0b0d17;
+                overflow: hidden;
+                background-size: cover;
+                background-position: top;
+
+            }
+
+            .nav {
+                position: absolute;
+                width: 86.5625rem;
+                height: 6rem;
+                left: 3.4375rem;
+                top: 2.5rem;
+            }
+
+            .logo {
+                position: absolute;
+                width: 2.3rem;
+                height: 2.3rem;
+                left: 0;
+                top: 0.5rem;
+                background: #0B0D17;
+            }
+
+
+
+            .nav-menu {
+
+                position: absolute;
+                width: 51.875rem;
+                height: 5.5rem;
+                left: 38.125rem;
+                top: -1rem;
+                background: rgba(255, 255, 255, 0.04);
+                backdrop-filter: blur(40.7742px);
+            }
+
+            .nav-menu::after {
+                content: "";
+                position: absolute;
+                width: 8rem;
+                height: 0.1rem;
+                top: 5.5rem;
+                left: 13.955rem;
+                background-color: #FFFFFF;
+            }
+
+
+            .items span {
+                display: inline-block;
+                margin-left: 0.5rem;
+                font-weight: bold;
+            }
+
+            .items a {
+                font-size: 16px;
+            }
+
+
+
+            .welcome-text {
+
+                left: 18%;
+                top: 25%;
+
+            }
+
+            .mars {
+
+                position: absolute;
+                width: 20rem;
+                height: 20rem;
+                left: 7rem;
+                top: 9rem;
+            }
+
+            .second-nav-menu {
+
+                position: absolute;
+                width: 14.8125rem;
+                height: 1.75rem;
+                left: 45rem;
+                top: 12rem;
+            }
+
+            .second-nav-menu .items {
+                font-size: 0.1rem;
+            }
+
+            .second-nav-menu .items::after {
+                content: "";
+                width: 2.9rem;
+                height: 0.1rem;
+                position: absolute;
+                background: #FFFFFF;
+                top: 1.5rem;
+                left: 4.6rem;
+            }
+
+            .destination-title {
+                position: absolute;
+                width: 9.5625rem;
+                height: 4rem;
+                left: 45rem;
+                top: 18rem;
+                font-size: 6rem;
+            }
+
+            .destination-description {
+
+                position: absolute;
+                width: 18.5rem;
+                height: 6.25rem;
+                left: 45rem;
+                top: 24rem;
+                font-size: 0.8rem;
+
+            }
+
+            .destination-description::after {
+                content: "";
+                position: absolute;
+                width: 19rem;
+                height: 0.1rem;
+                opacity: 0.08;
+                top: 7.5rem;
+                right: -1rem;
+                background-color: #FFFFFF;
+            }
+
+            hr {
+                position: absolute;
+                width: 29.5625rem;
+                height: 0.0625rem;
+                left: 12.5rem;
+                top: 4.0625rem;
+                background: #FFFFFF;
+                mix-blend-mode: normal;
+                opacity: 0.25;
+            }
+
+
+            .distance {
+                position: absolute;
+                width: 13.5rem;
+                height: 3.8125rem;
+                left: 42rem;
+                top: 34rem;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                text-transform: uppercase;
+            }
+
+            .avg-distance {
+
+                font-size: 0.8rem;
+
+            }
+
+            .total-distance {
+                font-size: 1.5rem;
+
+            }
+
+
+            .travel-time {
+                position: absolute;
+                height: 1.0625rem;
+                left: 47rem;
+                top: -1.28rem;
+                width: 15rem;
+                font-size: 0.7rem;
+
+            }
+
+            .total-time {
+                position: absolute;
+                height: 2rem;
+                width: 10rem;
+                left: 49rem;
+                top: -0.1rem;
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="nav">
+        <div class="logo-div">
+            <img src="../../images/logo.svg" class="logo">
+        </div>
+        <div class="hamburg-div">
+            <img src="../../images/icon-hamburger.svg" class="hamburger">
+        </div>
+        <div class="nav-menu">
+            <img src="../../images/icon-close.svg" class="hamburg-close">
+            <ul class="items">
+                <li><a href="../../index.html"><span>00</span>Home</a></li>
+                <li><a href="../crew/commander.html"><span>01</span>Crew</a></li>
+                <li><a href="../destination/moon.html"><span>02</span>Destination</a></li>
+                <li><a href="../technology/vechile.html"><span>03</span>Technolgy</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ::::: main contents ::::: -->
+    <div class="container">
+        <div class="welcome-text"><span>01</span>pick your destination</div>
+        <div class="mars-img-div">
+            <img src="../../images/mars.png" class="mars">
+        </div>
+        <div class="second-nav-menu">
+            <ul class="items">
+                <li><a href="../destination/moon.html">moon</a></li>
+                <li><a href="../destination/mars.html">mars</a></li>
+                <li><a href="../destination/europa.html">europa</a></li>
+                <li><a href="../destination/titan.html">titan</a></li>
+            </ul>
+        </div>
+        <div class="destination-title">mars</div>
+        <div class="destination-description">Don’t forget to pack your hiking boots. You’ll need them to tackle Olympus
+            Mons, the tallest planetary mountain in our solar system. It’s two and a half times the size of Everest!
+        </div>
+        <hr>
+        <div class="distance-time">
+            <div class="distance">
+                <div class="avg-distance">avg, distance</div>
+                <div class="total-distance">225 mil. km</div>
+            </div>
+            <div class="time">
+                <div class="travel-time">est. travel time</div>
+                <div class="total-time">9 months</div>
+            </div>
+        </div>
+    </div>
+    <!-- :::: script files :::: -->
+    <script>
+        const navMenu = document.querySelector(".nav-menu"),
+            toggleMenu = document.querySelector(".hamburger"),
+            closeMenu = document.querySelector(".hamburg-close"),
+            navLink = document.querySelectorAll(".nav-menu");
+
+        //  SHOW
+        toggleMenu.addEventListener("click", () => {
+            navMenu.classList.toggle("show");
+        });
+
+        //  HIDDEN
+        toggleMenu.addEventListener("click", () => {
+            closeMenu.classList.remove("show");
+        });
+
+        function linkAction() {
+            navMenu.classList.remove("show");
+        }
+        navLink.forEach((n) => n.addEventListener("click", linkAction));
+
+    </script>
+</body>
+
+</html>

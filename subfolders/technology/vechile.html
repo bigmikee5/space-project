@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VECHILE</title>
+
+    <!--:::: FAVICON ::::::  -->
+    <link rel="icon" href="../../images/favicon-32x32.png">
+    <!-- :::: STYLES ::::: -->
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: url(../mobileBgtec.jpg);
+            background-repeat: no-repeat;
+        }
+
+        .nav {
+            position: relative;
+        }
+
+        .logo {
+            position: absolute;
+            width: 2.5rem;
+            height: 2.5rem;
+            left: 1.5rem;
+            top: 1.5rem;
+        }
+
+        .hamburger {
+            position: absolute;
+            width: 1.5rem;
+            height: 1.3125rem;
+            left: 20rem;
+            top: 2.0625rem;
+        }
+
+        .nav-menu {
+            position: absolute;
+            top: 0;
+            right: -100%;
+            width: 70%;
+            background-color: grey;
+            height: 100vh;
+            padding: 2rem;
+            transition: 0.3s;
+            z-index: 999;
+        }
+
+        .hamburger-close {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+        }
+
+        .items {
+            position: absolute;
+            top: 4rem;
+            left: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .items a {
+            text-decoration: none;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .items span {
+            padding-right: 0.5rem;
+        }
+
+        .show {
+            right: 0;
+        }
+
+        /* ::::: MAIN :::::: */
+
+        .section {
+            position: absolute;
+            width: 100%;
+        }
+
+
+        .title {
+            position: absolute;
+            width: 11rem;
+            height: 1.1875rem;
+            left: 4.6875rem;
+            top: 5.5rem;
+        }
+
+        .title span {
+            position: absolute;
+            height: 1.1875rem;
+            right: 94%;
+            top: calc(50% - 1.1875rem/2);
+            font-family: 'Barlow Condensed';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 1rem;
+            line-height: 1.1875rem;
+            letter-spacing: 0.1688rem;
+            color: #FFFFFF;
+            mix-blend-mode: normal;
+            opacity: 0.25;
+        }
+
+        .title .launch {
+            position: absolute;
+            width: 12.5rem;
+            height: 1.1875rem;
+            left: 1.3rem;
+            top: calc(50% - 1.1875rem/2);
+            font-family: 'Barlow Condensed';
+            font-style: normal;
+            font-size: 0.9375rem;
+            line-height: 1.1875rem;
+            letter-spacing: 0.1688rem;
+            text-transform: uppercase;
+            color: #FFFFFF;
+            opacity: 0.8;
+        }
+
+        .vechile {
+
+            position: absolute;
+            width: 23.4375rem;
+            height: 10.625rem;
+            left: 0rem;
+            top: 8.6875rem;
+        }
+
+        .slide-container {
+            position: absolute;
+            top: 20.5rem;
+            left: 6.5rem;
+            width: 12rem;
+            display: flex;
+            gap: 1.2rem;
+        }
+
+        .slide-one {
+            position: relative;
+            width: 2.1875rem;
+            height: 2.1875rem;
+            border-radius: 50%;
+            background-color: #fff;
+        }
+
+        .one {
+            position: absolute;
+            top: 0.49rem;
+            left: 0.85rem;
+            text-decoration: none;
+            color: black;
+            font-size: 0.9rem;
+        }
+
+        .slide-two,
+        .slide-three {
+            position: relative;
+            width: 2.1875rem;
+            height: 2.1875rem;
+            border-radius: 50%;
+            border: 1px solid #fff;
+            opacity: 0.8;
+        }
+
+        .two,
+        .three {
+            position: absolute;
+            top: 0.49rem;
+            left: 0.85rem;
+            text-decoration: none;
+            color: #FFFFFF;
+            font-size: 0.9rem;
+        }
+
+        .terminology {
+            position: absolute;
+            width: 12.5rem;
+            height: 1.0625rem;
+            left: 25%;
+            top: 24rem;
+            font-family: 'Barlow Condensed';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 0.7rem;
+            line-height: 1.0625rem;
+            text-align: center;
+            letter-spacing: 0.1477rem;
+            color: #D0D6F9;
+            text-transform: uppercase;
+
+        }
+
+        .title-two {
+
+            position: absolute;
+            width: 400px;
+            height: 1.75rem;
+            right: -9%;
+            top: 25.7rem;
+            font-family: 'Bellefair';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 1.5rem;
+            line-height: 1.75rem;
+            text-align: center;
+            text-transform: uppercase;
+            color: #FFFFFF;
+
+        }
+
+        .description {
+
+            position: absolute;
+            width: 18.4rem;
+            height: 10.9375rem;
+            left: 10%;
+            top: 28.5rem;
+            font-family: 'Barlow';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 0.9rem;
+            line-height: 1.5625rem;
+            text-align: center;
+            color: #D0D6F9;
+        }
+
+        /* :::: MEDIA QUEERIES ::::: */
+
+        @media screen and (min-width:768px) {
+
+            body {
+
+                background-image: url(../bgtablettech.jpg);
+                overflow: auto;
+
+            }
+
+            .nav {
+                position: absolute;
+                width: 45.5625rem;
+                height: 6rem;
+                left: 2.4375rem;
+                top: 0;
+            }
+
+            .logo {
+                position: absolute;
+                width: 2rem;
+                height: 2rem;
+                left: 0.5rem;
+                top: 1.5rem;
+            }
+
+            .hamburger,
+            .hamburger-close {
+                display: none;
+            }
+
+            .nav-menu {
+                position: absolute;
+                width: 28.125rem;
+                height: 6rem;
+                left: 19.875rem;
+                top: 0;
+                background: rgba(255, 255, 255, 0.04);
+                backdrop-filter: blur(40.7742px);
+            }
+
+            .nav-menu::after {
+                position: absolute;
+                content: "";
+                width: 90px;
+                height: 1px;
+                top: 6rem;
+                left: 19.5rem;
+                background-color: #FFFFFF;
+            }
+
+
+            .items {
+
+                flex-direction: row;
+                gap: 2.1rem;
+                top: 2.1875rem;
+                left: 3rem;
+
+            }
+
+            .items a {
+                font-size: 0.8125rem;
+
+            }
+
+            .items span {
+                display: none;
+            }
+
+            .title {
+                position: absolute;
+                width: 13.5625rem;
+                height: 1.5rem;
+                left: 2.4063rem;
+                top: 6.25rem;
+            }
+
+            .vechile {
+                position: absolute;
+                width: 48rem;
+                height: 15.625rem;
+                left: 0rem;
+                top: 9rem;
+
+            }
+
+
+            .slide-container {
+                position: absolute;
+                width: 13.125rem;
+                height: 3.75rem;
+                left: 17.4375rem;
+                top: 25.5rem;
+            }
+
+            .terminology {
+                position: absolute;
+                height: 1.1875rem;
+                left: 32.7%;
+                top: 28.5rem;
+                font-size: 8px;
+
+            }
+
+            .title-two {
+
+                position: absolute;
+                left: 18%;
+                top: 29.3rem;
+                font-size: 10px;
+
+            }
+
+            .description {
+
+                position: absolute;
+                height: 140px;
+                left: 20%;
+                top: 30.6rem;
+                font-size: 10px;
+                width: 400px;
+            }
+
+        }
+
+
+        @media screen and (min-width:1024px) {
+
+            body {
+
+                background-image: url(../bgtablettech.jpg);
+                overflow: hidden;
+                background-size: cover;
+
+            }
+
+            .nav {
+                position: absolute;
+                width: 90rem;
+                height: 4rem;
+                left: 3.4375rem;
+                top: 1.5rem;
+            }
+
+            .logo {
+                position: absolute;
+                width: 35px;
+                height: 35px;
+                left: 0;
+                top: 2rem;
+            }
+
+            hr {
+                display: inline-block;
+                position: absolute;
+                width: 29rem;
+                height: 0.0625rem;
+                top: 2.7rem;
+                right: 48rem;
+                background: #FFFFFF;
+                mix-blend-mode: normal;
+                opacity: 0.25;
+            }
+
+
+
+            .nav-menu {
+                position: absolute;
+                width: 830px;
+                height: 80px;
+                left: 650px;
+                top: 0;
+
+            }
+
+            .nav-menu::after {
+                position: absolute;
+                content: "";
+                width: 95px;
+                height: 1px;
+                top: 5rem;
+                left: 29rem;
+                background-color: #FFFFFF;
+            }
+
+
+            .items {
+
+                flex-direction: row;
+                gap: 3rem;
+                top: 2.1875rem;
+                left: 5rem;
+                opacity: 0.8;
+
+            }
+
+            .items a {
+                font-size: 0.8125rem;
+
+            }
+
+            .items span {
+                display: inline-block;
+                opacity: 1;
+                font-weight: bold;
+
+            }
+
+            .title {
+                position: absolute;
+                width: 19.0625rem;
+                height: 2.125rem;
+                left: 10.4063rem;
+                top: 13.25rem;
+            }
+
+            .vechile {
+                position: absolute;
+                width: 30rem;
+                height: 20rem;
+                left: 60rem;
+                top: 15rem;
+
+
+            }
+
+
+            .slide-container {
+                position: absolute;
+                width: 25rem;
+                height: 15rem;
+                left: 10rem;
+                top: 20rem;
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+
+            .slide-one {
+                position: relative;
+                width: 3rem;
+                height: 3rem;
+                border-radius: 50%;
+                background-color: #fff;
+            }
+
+            .one {
+                position: absolute;
+                top: 1rem;
+                left: 1.2rem;
+                text-decoration: none;
+                color: black;
+                font-size: 0.9rem;
+            }
+
+            .slide-two,
+            .slide-three {
+                position: relative;
+                width: 3rem;
+                height: 3rem;
+                border-radius: 50%;
+                border: 1px solid #fff;
+                opacity: 0.8;
+            }
+
+            .two,
+            .three {
+                position: absolute;
+                top: 1rem;
+                left: 1.2rem;
+                text-decoration: none;
+                color: #FFFFFF;
+                font-size: 0.9rem;
+            }
+
+            .terminology {
+                position: absolute;
+                height: 19px;
+                left: 17%;
+                top: 20rem;
+                font-size: 10px;
+
+            }
+
+            .title-two {
+
+                position: absolute;
+                height: 19px;
+                left: 14%;
+                top: 21.5rem;
+                font-size: 35px;
+
+            }
+
+            .description {
+
+                position: absolute;
+                height: 192px;
+                left: 17%;
+                top: 25rem;
+                font-size: 15px;
+                width: 340px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="nav">
+        <div class="logo-div">
+            <img src="../../images/logo.svg" class="logo">
+        </div>
+        <hr>
+        <div class="hamburger-div">
+            <img src="../../images/icon-hamburger.svg" class="hamburger">
+        </div>
+        <div class="nav-menu">
+            <img src="../../images/icon-close.svg" class="hamburger-close">
+
+            <ul class="items">
+                <li><a href="../../index.html"><span>00</span>Home</a></li>
+                <li><a href="../crew/commander.html"><span>01</span>Crew</a></li>
+                <li><a href="../destination/moon.html"><span>02</span>Destination</a></li>
+                <li><a href="../technology/vechile.html"><span>03</span>Technology</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- :::: MAIN CONTENTS :::: -->
+    <main class="section">
+        <div class="title"><span>03</span> <span class="launch">space launch 101</span></div>
+        <div class="image">
+            <img src="../../images/vechileDesk.png" class="vechile">
+        </div>
+        <div class="slide-container">
+            <div class="slide-one"><a href="../technology/vechile.html" class="one">1</a></div>
+            <div class="slide-two"><a href="../technology/spaceport.html" class="two">2</a></div>
+            <div class="slide-three"><a href="../technology/capsule.html " class="three">3</a></div>
+        </div>
+        <div class="terminology">the terminology...</div>
+        <div class="title-two">Launch vechile</div>
+        <div class="description">A launch vehicle or carrier rocket is a rocket-propelled vehicle used to carry a
+            payload from Earth's surface to space, usually to Earth orbit or beyond. Our WEB-X carrier rocket is the
+            most powerful in operation. Standing 150 metres tall, it's quite an awe-inspiring sight on the launch pad!
+        </div>
+    </main>
+
+    <!-- ::::SCRIPT FILES :::: -->
+    <script>
+        const navMenu = document.querySelector('.nav-menu'),
+            toggleMenu = document.querySelector('.hamburger'),
+            menuClose = document.querySelector('.hamburger-close'),
+            navLink = document.querySelectorAll('.nav-menu');
+
+        // SHOW MENU
+        toggleMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
+
+        // HIDE MENU
+        toggleMenu.addEventListener('click', () => {
+            menuClose.classList.remove('show');
+        });
+
+
+        function linkAction() {
+            navMenu.classList.remove("show");
+        }
+        navLink.forEach((n) => n.addEventListener("click", linkAction));
+
+    </script>
+</body>
+
+</html>
